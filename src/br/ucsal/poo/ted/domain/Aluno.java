@@ -1,6 +1,7 @@
 package br.ucsal.poo.ted.domain;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Aluno extends Pessoa {
     private static int sequencia = 1;
@@ -81,4 +82,16 @@ public class Aluno extends Pessoa {
                 "\n Data de inicio: " + getDATAMATRICULA();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Aluno)) return false;
+        Aluno aluno = (Aluno) o;
+        return cpf.equals(aluno.cpf);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cpf);
+    }
 }

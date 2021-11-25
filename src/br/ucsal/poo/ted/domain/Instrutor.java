@@ -1,6 +1,7 @@
 package br.ucsal.poo.ted.domain;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Instrutor extends Pessoa {
     private static int sequencia = 1;
@@ -37,5 +38,18 @@ public class Instrutor extends Pessoa {
                 "\n Nome: " + getNome() +
                 "\n Sexo: " + getSexo() +
                 "\n Idade:" + getIdade();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Instrutor)) return false;
+        Instrutor instrutor = (Instrutor) o;
+        return codigoCREF.equals(instrutor.codigoCREF);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(codigoCREF);
     }
 }
