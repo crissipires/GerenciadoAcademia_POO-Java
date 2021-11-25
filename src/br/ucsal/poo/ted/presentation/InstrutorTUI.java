@@ -5,6 +5,7 @@ import br.ucsal.poo.ted.business.InstrutorBO;
 import br.ucsal.poo.ted.domain.Instrutor;
 import br.ucsal.poo.ted.domain.SexoEnum;
 import br.ucsal.poo.ted.exception.NegocioException;
+import br.ucsal.poo.ted.exception.NotFoundException;
 import br.ucsal.poo.ted.presentation.util.UtilTUI;
 
 import java.time.LocalDate;
@@ -39,7 +40,7 @@ public class InstrutorTUI {
                         ", Idade:" + instrutor.getIdade());
             }
             exibirTxt("--------------------------------------");
-        } catch (NegocioException e) {
+        } catch (NotFoundException e) {
             e.printStackTrace();
 
         }
@@ -52,7 +53,7 @@ public class InstrutorTUI {
             Instrutor instrutor = InstrutorBO.findbyId(id);
             System.out.println(instrutor);
             exibirTxt("--------------------------------------");
-        } catch (NegocioException e) {
+        } catch (NotFoundException e) {
             exibirTxt(e.getMessage());
         }
     }

@@ -7,6 +7,7 @@ import br.ucsal.poo.ted.domain.Instrutor;
 import br.ucsal.poo.ted.domain.SexoEnum;
 import br.ucsal.poo.ted.domain.TreinoEnum;
 import br.ucsal.poo.ted.exception.NegocioException;
+import br.ucsal.poo.ted.exception.NotFoundException;
 import br.ucsal.poo.ted.presentation.util.UtilTUI;
 
 import java.time.LocalDate;
@@ -44,7 +45,7 @@ public class AlunoTUI {
                 );
             }
             exibirTxt("-------------------------------------");
-        } catch (NegocioException e) {
+        } catch (NotFoundException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -55,7 +56,7 @@ public class AlunoTUI {
         try {
             Aluno aluno = AlunoBO.findbyId(id);
             System.out.println(aluno);
-        } catch (NegocioException e) {
+        } catch (NotFoundException e) {
             exibirTxt(e.getMessage());
         }
 
@@ -83,7 +84,7 @@ public class AlunoTUI {
             try {
                 Integer instrutor = UtilTUI.getInteger("Id do Instrutor:");
                 return InstrutorBO.findbyId(instrutor);
-            } catch (NegocioException e) {
+            } catch (NotFoundException e) {
                 System.out.println(e.getMessage());
             }
         }
